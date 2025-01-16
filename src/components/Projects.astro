@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import ElethorLandingPage from "@/assets/elethor-landing-page.jpg"
+import BitcompayLandingPage from "@/assets/bitcompay-landing-page.png"
+import IantechLandingPage from "@/assets/iantech-landing-page.png"
+const projects = [
+  {
+    title: 'Bitcompay Landing Page',
+    description: 'A landing page for a billing and payment processing company',
+    image: BitcompayLandingPage,
+    tags: ['Astro', 'Tailwind CSS'],
+    link: 'https://bitcompay.ar/',
+  },
+  {
+    title: 'Iantech Technologies Landing Page',
+    description: 'A modern landing page for a tech consulting company',
+    image: IantechLandingPage,
+    tags: ['Astro', 'Tailwind CSS', 'React'],
+    link: 'https://www.iantech.com.ar/',
+  },
+  {
+    title: 'Elethor Landing Page',
+    description: 'A modern landing page for a crypto and trading app',
+    image: ElethorLandingPage,
+    tags: ['Astro', 'Tailwind', 'React'],
+    link: 'https://elethor.me/',
+  },
+];
+---
+
+<section id="projects" class="py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">
+      My Projects
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          data-aos="fade-up"
+        >
+          <Image src={project.image as ImageMetadata} alt={project.description} />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">{project.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map(tag => (
+                <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <a
+              href={project.link}
+              class="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project →
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
