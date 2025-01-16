@@ -1,13 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
-import netlify from '@astrojs/netlify';
+import netlify from '@astrojs/netlify/functions';
 
 export default defineConfig({
   output: 'server',
-  adapter: netlify({
-    dist:new URL('./dist/', import.meta.url),
-    redirects:false,
-  }),
-  integrations: [tailwind(), react()],
+  adapter: netlify(),
+  // Remove any assets configuration as it's not supported
+  // Use basic configuration only
 });
