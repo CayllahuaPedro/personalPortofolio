@@ -5,6 +5,9 @@ import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   output: 'server',
-  adapter: netlify(),
+  adapter: netlify({
+    dist:new URL('./dist/', import.meta.url),
+    redirects:false,
+  }),
   integrations: [tailwind(), react()],
 });
